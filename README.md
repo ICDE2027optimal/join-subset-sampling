@@ -1,6 +1,8 @@
 # Independent subset sampling over acyclic joins
 
-Code and measurement records for **Optimal-Time Independent Subset Sampling over Acyclic Joins**.
+Code and measurement records for the paper
+
+>>**Optimal-Time Independent Subset Sampling over Acyclic Joins**.
 
 The sampler builds an index over a static, full acyclic join. Each input tuple has a weight in
 `[0,1]`. A complete join result is included with probability equal to the product of its tuple

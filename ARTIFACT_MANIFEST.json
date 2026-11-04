@@ -1,7 +1,7 @@
 {
-  "schema": "artifact-file-manifest-v1",
+  "schema": "artifact-file-manifest-v11",
   "paper": "Optimal-Time Independent Subset Sampling over Acyclic Joins",
-  "version": "1",
+  "version": "11",
   "date": "2026-11-05",
   "files": [
     {
@@ -301,8 +301,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4555,
-      "sha256": "09ba9cee07b4bf1c2590fad55a7bb069536caf03f3d5d7f0572fb62781841740"
+      "bytes": 4568,
+      "sha256": "fcd15dd67ff70dc036f4ea075f3ff887a52db72459d0ac917591b5f2cf1ca3c2"
     },
     {
       "path": "src/formal_driver.cpp",
