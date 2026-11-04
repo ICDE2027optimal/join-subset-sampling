@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.20)
 project(product_subset_sampling LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -41,8 +41,11 @@ if(BUILD_TESTING)
     endif()
     set_tests_properties(${target} PROPERTIES TIMEOUT 120)
   endforeach()
-  find_package(Python3 COMPONENTS Interpreter REQUIRED)
+  find_package(Python3 3.10 COMPONENTS Interpreter REQUIRED)
   add_test(NAME sampling_cli COMMAND ${Python3_EXECUTABLE}
     ${PROJECT_SOURCE_DIR}/tests/test_cli.py --binary $<TARGET_FILE:product_sample> -v)
   set_tests_properties(sampling_cli PROPERTIES TIMEOUT 120)
+  add_test(NAME artifact_tools COMMAND ${Python3_EXECUTABLE}
+    ${PROJECT_SOURCE_DIR}/tests/test_artifact_tools.py -v)
+  set_tests_properties(artifact_tools PROPERTIES TIMEOUT 120)
 endif()

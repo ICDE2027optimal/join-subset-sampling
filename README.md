@@ -15,9 +15,11 @@ describe the numerical measures used by the prototype.
 
 ## Build
 
-Use Linux, GCC 11 or newer, CMake 3.16 or newer, and Python 3.10 or newer.
+Use Linux, GCC 11 or newer, and CMake 3.20 or newer.
 The core and measurement drivers use the C++ standard library and the bundled AtCoder headers.
-Python's standard library suffices for the CLI tests and inspection of supplied measurements.
+The CLI tests and inspection of supplied measurements use Python 3.10 or newer with its standard
+library. Experiment preparation uses Python 3.10–3.12 with the pinned dependencies. The tested
+preparation environment is Python 3.10.12, as detailed in the [experiment guide](experiments/README.md).
 
 ```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release

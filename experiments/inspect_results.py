@@ -63,18 +63,22 @@ def comparisons(rows, groups, summaries):
             item['break_even_calls'] = (bm-bo)/(qo-qm) if qo != qm else None
             item['ours_lower_cost_integer_calls'] = (
                 max(0, math.ceil(item['break_even_calls'])-1) if bm>bo and qo>qm else None)
-        elif batch in ('stats_original', 'controlled', 'job1a'):
+        elif batch in ('stats_original', 'controlled', 'job1a', 'extension'):
             baselines = [method for b, c, method in summaries
                          if b == batch and c == case and method != 'candidate'
                          and summaries[b, c, method]['complete']]
             if not baselines:
                 continue
+            def cost(method):
+                if batch == 'extension':
+                    return median(r['B_ms']+k*r['q_ms'] for r in groups[batch, case, method])
+                return metric(method, 'B_ms')+k*metric(method, 'q_ms')
             qbase = min(baselines, key=lambda m: metric(m, 'q_ms'))
-            cbase = min(baselines, key=lambda m: metric(m, 'B_ms')+k*metric(m, 'q_ms'))
+            cbase = min(baselines, key=cost)
             item.update(q_baseline=qbase, cost_baseline=cbase,
                         q_ratio=metric('candidate', 'q_ms')/metric(qbase, 'q_ms'),
-                        cost_ratio=(metric('candidate', 'B_ms')+k*metric('candidate', 'q_ms')) /
-                                   (metric(cbase, 'B_ms')+k*metric(cbase, 'q_ms')))
+                        cost_ratio=cost('candidate')/cost(cbase),
+                        cost_aggregation='median(B+kq)' if batch=='extension' else 'median(B)+k*median(q)')
         else:
             continue
         output.append(item)
@@ -113,6 +117,7 @@ def main():
     comp = comparisons(rows, groups, summaries)
     product = [c for c in comp if c['batch']=='stats_original' and c['mode'].startswith('product-')]
     paired = [c for c in comp if c['batch']=='materialized_paired']
+    extension = [c for c in comp if c['batch']=='extension']
     overview = {
         'processes': len(rows), 'statuses': dict(Counter(r['status'] for r in rows)),
         'checked_summary_values': checked,
@@ -122,7 +127,12 @@ def main():
         'paired_cases': len(paired),
         'paired_materialized_sampling_wins': sum(c['q_ratio']['median']>1 for c in paired),
         'paired_ours_scheduled_cost_wins': sum(c['cost_ratio']['median']<1 for c in paired),
-        'paired_ours_integer_call_benefit_cases': sum((c['ours_lower_cost_integer_calls'] or 0)>0 for c in paired)}
+        'paired_ours_integer_call_benefit_cases': sum((c['ours_lower_cost_integer_calls'] or 0)>0 for c in paired),
+        'extension': {query: {
+            'cases': sum(c['query_id']==query for c in extension),
+            'sampling_wins': sum(c['query_id']==query and c['q_ratio']<1 for c in extension),
+            'cost_wins': sum(c['query_id']==query and c['cost_ratio']<1 for c in extension)}
+            for query in sorted({c['query_id'] for c in extension})}}
     print(json.dumps(overview, indent=2))
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)

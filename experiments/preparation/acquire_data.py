@@ -4,11 +4,14 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import tarfile
+import tempfile
 import urllib.request
 
 
@@ -34,15 +37,28 @@ def verify(path: Path, expected_bytes: int, expected_sha256: str) -> dict:
     return {"path": str(path.resolve()), "bytes": size, "sha256": digest}
 
 
+@contextmanager
+def staged_file(destination: Path, suffix: str):
+    """Give each attempt a separate temporary file beside its destination."""
+    descriptor, name = tempfile.mkstemp(
+        prefix=destination.name + ".", suffix=suffix, dir=destination.parent)
+    os.close(descriptor)
+    temporary = Path(name)
+    try:
+        yield temporary
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
 def download(url: str, path: Path, expected_bytes: int, expected_sha256: str) -> dict:
     if path.exists():
         return verify(path, expected_bytes, expected_sha256)
-    temporary = path.with_suffix(path.suffix + ".download")
     request = urllib.request.Request(url, headers={"User-Agent": "join-sampling-minimal-artifact/1"})
-    with urllib.request.urlopen(request, timeout=120) as response, temporary.open("xb") as output:
-        shutil.copyfileobj(response, output, length=1 << 20)
-    record = verify(temporary, expected_bytes, expected_sha256)
-    temporary.replace(path)
+    with staged_file(path, ".download") as temporary:
+        with urllib.request.urlopen(request, timeout=120) as response, temporary.open("wb") as output:
+            shutil.copyfileobj(response, output, length=1 << 20)
+        record = verify(temporary, expected_bytes, expected_sha256)
+        temporary.replace(path)
     record["path"] = str(path.resolve())
     return record
 
@@ -76,6 +92,7 @@ def acquire_job(output: Path, config: dict, archive: Path | None) -> tuple[list[
     else:
         archive_record = verify(archive, info["bytes"], info["sha256"])
     wanted = {item["member"] for item in config["tables"]} | {info["schema_member"]}
+    expected_tables = {item["member"]: item for item in config["tables"]}
     seen = set()
     with tarfile.open(archive, "r:gz") as bundle:
         for member in bundle:
@@ -91,10 +108,13 @@ def acquire_job(output: Path, config: dict, archive: Path | None) -> tuple[list[
             source = bundle.extractfile(member)
             if source is None:
                 raise ValueError(f"Archive member has no file content: {member.name}")
-            temporary = destination.with_suffix(destination.suffix + ".extract")
-            with source, temporary.open("xb") as target:
-                shutil.copyfileobj(source, target, length=1 << 20)
-            temporary.replace(destination)
+            with source, staged_file(destination, ".extract") as temporary:
+                with temporary.open("wb") as target:
+                    shutil.copyfileobj(source, target, length=1 << 20)
+                if basename in expected_tables:
+                    expected = expected_tables[basename]
+                    verify(temporary, expected["expected_bytes"], expected["expected_sha256"])
+                temporary.replace(destination)
     if seen != wanted:
         raise ValueError(f"Archive is missing selected members: {sorted(wanted - seen)}")
     return verify_sources("job", output, config), archive_record

@@ -14,7 +14,8 @@ python3 experiments/inspect_results.py --output runs/author-summary.json
 The script verifies file digests, reconstructs method medians and observed ranges, and recomputes
 the original baseline comparisons and paired materialization ratios. It reports the 17/18 PRODUCT
 sampling wins, 9/18 total-cost wins, and 52/67 paired total-cost wins. Its output file also contains
-per-case comparator identities and estimated crossover counts.
+per-case comparator identities and estimated crossover counts. The extension comparison covers all
+ten NEWbranch5 and JOB17a cases, with comparator identities selected from complete measurements.
 
 | Batch ID | Coverage | Recorded outcomes | Paper location |
 | --- | --- | ---: | --- |
@@ -43,7 +44,8 @@ The build commands regenerate executables using the current environment.
 
 ## Run a controlled experiment
 
-Install the preparation dependencies in a Python environment:
+Use Python 3.10–3.12 for experiment preparation. The tested version is Python 3.10.12.
+Install the preparation dependencies in that environment:
 
 ```sh
 python3 -m venv .venv
@@ -52,6 +54,8 @@ python3 -m pip install -r experiments/configs/requirements.txt
 ```
 
 The requirements select NumPy 1.26.1 and DuckDB 1.5.6, matching the preparation environment.
+The [NumPy release notes](https://numpy.org/doc/stable/release/1.26.1-notes.html)
+specify its supported Python versions.
 Execution uses Linux CPU affinity, address-space limits, and GNU `time`.
 
 Start with a short end-to-end check:
@@ -95,6 +99,9 @@ Source manifests pin the STATS snapshot, JOB SQL, IMDb archive, and accepted sou
 The acquisition script verifies hashes before preparation. Reuse an existing IMDb archive with
 `--archive PATH` to avoid downloading it again. Source files and prepared data can require substantial
 disk space, particularly for JOB17a.
+After an interrupted download or extraction, repeat the same command. Completed files are verified
+and reused. Unfinished files are processed again using separate temporary files, with completed
+downloads and extracted tables checked before replacing their destinations.
 
 ```sh
 python3 experiments/preparation/acquire_data.py stats --output data/stats
@@ -171,6 +178,9 @@ The author output is retained in `results/numerical_checks.txt`, with its source
 - For the original STATS, controlled, and JOB1a comparisons, sampling ratios divide method medians.
   Total-cost ratios use `median(B)+k median(q)` for each method. The denominator is the fastest
   applicable baseline with all four measurements, chosen separately for each case and metric.
+- Extension comparisons use medians of the four per-process `B+kq` values. Sampling ratios divide
+  method medians. Both comparisons select the fastest applicable baseline with four completed
+  measurements. Ratios in the inspection output are Ours divided by that baseline.
 - The paired study divides corresponding repeats first and then reports the median of the four
   ratios. For total cost, repeat `r` contributes `(B_ours,r+k q_ours,r)/(B_mat,r+k q_mat,r)`.
   Vertical segments in Fig. 4 show the minimum and maximum of these four observed ratios.

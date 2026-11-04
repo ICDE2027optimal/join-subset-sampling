@@ -1,7 +1,7 @@
 {
-  "schema": "artifact-file-manifest-v11",
+  "schema": "artifact-file-manifest-v12",
   "paper": "Optimal-Time Independent Subset Sampling over Acyclic Joins",
-  "version": "11",
+  "version": "12",
   "date": "2026-11-05",
   "files": [
     {
@@ -16,8 +16,8 @@
     },
     {
       "path": "CMakeLists.txt",
-      "bytes": 1907,
-      "sha256": "3a253db0d1a4acbe7cd99aadafb1e55171e7db14f33d48d59d3a59e8ac0b21e4"
+      "bytes": 2094,
+      "sha256": "297c9fc6350d9d7aaa7a64663afcd2a52ef977495acb092336a96cd191b37df7"
     },
     {
       "path": "docs/baselines.md",
@@ -131,13 +131,13 @@
     },
     {
       "path": "experiments/inspect_results.py",
-      "bytes": 6922,
-      "sha256": "171478b615e9c56d06aaf4ae771c4aa5c5a8bf03239653e5e1327ab79e8a5c7e"
+      "bytes": 7537,
+      "sha256": "622d4e5adc74e3720ad8bba066451c698b5c08b24d93e668a79fb3d19f70d35b"
     },
     {
       "path": "experiments/preparation/acquire_data.py",
-      "bytes": 5898,
-      "sha256": "bbbe07bc097f46454a40dd9f6a785a6a835bbe3f72d6b718eedb154d9585d5fb"
+      "bytes": 6649,
+      "sha256": "4e51ee44d93c59484e48d2e88780564fd53c111e0b19d7472be1e48f0b1f7873"
     },
     {
       "path": "experiments/preparation/controlled_generator.py",
@@ -196,8 +196,8 @@
     },
     {
       "path": "experiments/README.md",
-      "bytes": 10686,
-      "sha256": "ad794376deef3d38ec5113defd760f930eb6d292454f06c940a4535fbd5ed44d"
+      "bytes": 11571,
+      "sha256": "a89192d856901e3cc1c5bea7fb812971c9693297a71dab85048f2c34a1e32132"
     },
     {
       "path": "experiments/results/aggregates.json",
@@ -301,8 +301,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4568,
-      "sha256": "fcd15dd67ff70dc036f4ea075f3ff887a52db72459d0ac917591b5f2cf1ca3c2"
+      "bytes": 4751,
+      "sha256": "ff95e945954580069a8669ee87185907210aaa873804af132670b2f046ba4e82"
     },
     {
       "path": "src/formal_driver.cpp",
@@ -443,6 +443,11 @@
       "path": "tests/rank_scan_controls_test.cpp",
       "bytes": 14921,
       "sha256": "ea365d22418d4830f55c8865e61ec31d68ac0354444b192d9376a63342bac8ae"
+    },
+    {
+      "path": "tests/test_artifact_tools.py",
+      "bytes": 6844,
+      "sha256": "e5de1b3e67010d3462ca379ef9371ffd4080c3f05bc676261000e23c1a8b21b1"
     },
     {
       "path": "tests/test_cli.py",
