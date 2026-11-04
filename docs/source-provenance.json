@@ -1,0 +1,150 @@
+{
+  "schema": "source-provenance-v1",
+  "implementation": "paper-p9",
+  "sources": [
+    {
+      "file": "include/core.hpp",
+      "source_file": "core.hpp",
+      "source_sha256": "8c0b589b099833103d5a64b8c548a5606b7f9acb1762c9fbf76d7b1156279708",
+      "artifact_sha256": "6b94ac160e45b3ecee5c3ea63104e8cd83b65b925eb4ab9a65e5a01f4c2f6f88",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/orient.hpp",
+      "source_file": "orient.hpp",
+      "source_sha256": "33fe57260b49e030d151806dc743a7f9a76a54737dc62a2e018428b37a038a3b",
+      "artifact_sha256": "d3cd5bffc66aeeeb7dc1be02753bc806edb37db0e89eb5a9f87ecb7592f1d377",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/prepared_loader.hpp",
+      "source_file": "prepared_loader.hpp",
+      "source_sha256": "d6f5ebb0634c14a9cafc36120acd8ddcff0674828de2089c4cee901e42afdaec",
+      "artifact_sha256": "c927df74502f274d459900c3ee97111b3187dfd010e80ffe7361a22cc8246cd1",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/rank_scan_controls.hpp",
+      "source_file": "rank_scan_controls.hpp",
+      "source_sha256": "8e233b6b38d529752750249cfdbe7c78ed85d1ee378c9f8ce870c49034f949f4",
+      "artifact_sha256": "2e777670f125be8651ecd101d0366511cb00385978f5214f98db0660cc8aa54b",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/score_baseline_hybrid.hpp",
+      "source_file": "score_baseline_hybrid.hpp",
+      "source_sha256": "c938192b68ca3613dd0fd6e52bf552f9c93c7ed823d864f8ae1bf63e679204df",
+      "artifact_sha256": "9a31ccd0ccd7369a68b88b14f6afa52726fdef1e18e04f4495d1f2be0463e5db",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/score_convolution.hpp",
+      "source_file": "score_convolution.hpp",
+      "source_sha256": "1c62334555913181568554c0c2ca689877d59bfe5d6300c2fdd6c1861e7fe433",
+      "artifact_sha256": "11ab0f9e62bad2580b63cde66d0b00d4fac0c544c77a93ec0c223a79b6637faf",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/materialized_explicit.hpp",
+      "source_file": "materialized_explicit.hpp",
+      "source_sha256": "adf2f460b13cf89de28dd5ce7b10fbfd729478225a67cdd756467fa7340156bb",
+      "artifact_sha256": "f5f47c9c38633e6e72940f0b43b26ec896513fc10679d7f80e517ff36ec31c9b",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/uniform_envelope.hpp",
+      "source_file": "uniform_envelope.hpp",
+      "source_sha256": "1c43c83d3a8773d523873ed1c13a704d7aebb1ef1b7e73e1c0043fe80abf8ff3",
+      "artifact_sha256": "47a335543dd62188d6e7a579dabd2481ccae46ded49cde7b3c01131ce0b79792",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/root_envelope.hpp",
+      "source_file": "root_envelope.hpp",
+      "source_sha256": "a8a9e20088895026f006b0c07b4638fdadbe04ae974de0d29c71d0cb63f24b9a",
+      "artifact_sha256": "aa914335071179ac30be21eb5f32823e2ec9a7fa21655612d478b1943941ecaf",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "include/explicit_subset.hpp",
+      "source_file": "explicit_subset.hpp",
+      "source_sha256": "6f26a9ebb938824fa718016d99835cd9e5fdc7426ebb5fad6c7078250e06b951",
+      "artifact_sha256": "cf064f59d21cb953d1dd17d67a073ab2afd4f3a34b7e6f4a560d17e912f7e1e2",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "src/formal_driver.cpp",
+      "source_file": "formal_driver.cpp",
+      "source_sha256": "686098d0b17ed4b469dc382cdb6d261801ef76b5e025b7f6fa1dd9a448d6545b",
+      "artifact_sha256": "7e38ca59519e022e20e7d8c0235ad965cfce36b615a5c514fd2297a27483f3c7",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "src/materialized_explicit_driver.cpp",
+      "source_file": "materialized_explicit_driver.cpp",
+      "source_sha256": "2d70b79e856623dd45beea8dad9c5d4ec6099d4bf133b203e9dd2e1ef2f645b2",
+      "artifact_sha256": "3b8de06ea1981a67974ba901e270c5c786c804b94cfba5b5c7f2cc013784f5ea",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "tests/core_correctness.cpp",
+      "source_file": "core_correctness.cpp",
+      "source_sha256": "24f9612df315df8da26b0bc869939f75e44a8e1c198a9031d3babf4771c188d6",
+      "artifact_sha256": "7d0b14121e52af432cce6a8a2c3226e6ac8a34a786e48aaefe01b7f1f80ebd70",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "tests/core_test_helpers.hpp",
+      "source_file": "core_test_helpers.hpp",
+      "source_sha256": "0f890c98a06a0d324d431b712d20e46fcb282f0305da2f33a6e60023f499ba05",
+      "artifact_sha256": "dd9ec59e37193c10b946bf2288a2b8c5362489e1883cffcbfb6411a57c01d66b",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "tests/orient_correctness.cpp",
+      "source_file": "orient_correctness.cpp",
+      "source_sha256": "0cdcb0aa180f6ba7f39ee0783e5d4a706538ee56b7395faf623bb3c3efc9cbbf",
+      "artifact_sha256": "4d9a373e67c12d58599f2fd554b249976edcfbc479dfcc52070b7961f447e6d7",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "tests/loader_correctness.cpp",
+      "source_file": "loader_correctness.cpp",
+      "source_sha256": "dc5f2bbfd7f026fcefb00823a807fbea73dea16c33513eefdb548565cac85895",
+      "artifact_sha256": "9e1af2421aedb273fdd081bdd422030ca266d533844b2811291b333cdbf8bd5f",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "tests/materialized_explicit_test.cpp",
+      "source_file": "materialized_explicit_test.cpp",
+      "source_sha256": "e4455e3c5222ab9274fdcec7d770a787a32d08aa1f2639c3f87a27d42ff1527d",
+      "artifact_sha256": "619200b1694ede1f25253accc99d29503302625bb8a040a9d3090227891bf4a3",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    },
+    {
+      "file": "tests/rank_scan_controls_test.cpp",
+      "source_file": "rank_scan_controls_test.cpp",
+      "source_sha256": "68e9ce2470ca2c8b48aba27ea5cac09655ce296538cb7e398322c7b75ed2c360",
+      "artifact_sha256": "ea365d22418d4830f55c8865e61ec31d68ac0354444b192d9376a63342bac8ae",
+      "executable_tokens_equal": true,
+      "changes": "comments and whitespace"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "format": "stats-source-manifest-v1",
+  "repository": "Nathaniel-Han/End-to-End-CardEst-Benchmark",
+  "commit": "670cb8d4bf4cbfa32f94fdf17f33973d3fd67d1b",
+  "raw_base_url": "https://raw.githubusercontent.com/Nathaniel-Han/End-to-End-CardEst-Benchmark/670cb8d4bf4cbfa32f94fdf17f33973d3fd67d1b/",
+  "files": [
+    {
+      "name": "badges.csv",
+      "repo_path": "datasets/stats_simplified/badges.csv",
+      "role": "table",
+      "table": "badges",
+      "expected_bytes": 2503642,
+      "columns": {
+        "Id": "int",
+        "UserId": "int",
+        "Date": "timestamp"
+      },
+      "expected_sha256": "ad99b96804a61dc2d608504518d47bf584e174bcce74fd229e0487db0391902d"
+    },
+    {
+      "name": "comments.csv",
+      "repo_path": "datasets/stats_simplified/comments.csv",
+      "role": "table",
+      "table": "comments",
+      "expected_bytes": 6896379,
+      "columns": {
+        "Id": "int",
+        "PostId": "int",
+        "Score": "int",
+        "CreationDate": "timestamp",
+        "UserId": "int"
+      },
+      "expected_sha256": "691c11551ecec80a125f9671d6f370e1d0935f44d249a02aae933ce0b92f81c7"
+    },
+    {
+      "name": "postHistory.csv",
+      "repo_path": "datasets/stats_simplified/postHistory.csv",
+      "role": "table",
+      "table": "postHistory",
+      "expected_bytes": 12056207,
+      "columns": {
+        "Id": "int",
+        "PostHistoryTypeId": "int",
+        "PostId": "int",
+        "CreationDate": "timestamp",
+        "UserId": "int"
+      },
+      "expected_sha256": "b155a8564aac8fb8a278ebbb2648af3cbdb7017165ebfb6866c8fb4fc7e9c757"
+    },
+    {
+      "name": "postLinks.csv",
+      "repo_path": "datasets/stats_simplified/postLinks.csv",
+      "role": "table",
+      "table": "postLinks",
+      "expected_bytes": 462491,
+      "columns": {
+        "Id": "int",
+        "CreationDate": "timestamp",
+        "PostId": "int",
+        "RelatedPostId": "int",
+        "LinkTypeId": "int"
+      },
+      "expected_sha256": "25161d611c2b557f087dc7d29832ee3d232c8fdb08955847ae6d842a4f66377e"
+    },
+    {
+      "name": "votes.csv",
+      "repo_path": "datasets/stats_simplified/votes.csv",
+      "role": "table",
+      "table": "votes",
+      "expected_bytes": 12133435,
+      "columns": {
+        "Id": "int",
+        "PostId": "int",
+        "VoteTypeId": "int",
+        "CreationDate": "timestamp",
+        "UserId": "int",
+        "BountyAmount": "int"
+      },
+      "expected_sha256": "fadd897b84f5ed715ad4b8d66b6d2d1da8463ff1fafcc86dce9a7210786c9531"
+    },
+    {
+      "name": "stats.sql",
+      "repo_path": "datasets/stats_simplified/stats.sql",
+      "role": "schema",
+      "expected_bytes": 1234,
+      "expected_sha256": "adb88e0ab3640fa75bfb4eb67cf128742c0559fb5d0c26aa6e41243ee765b291"
+    },
+    {
+      "name": "stats_load.sql",
+      "repo_path": "scripts/sql/stats_load.sql",
+      "role": "load_script",
+      "expected_bytes": 602,
+      "expected_sha256": "862cfac7964824b164546f6ad0c305c280627e52d9dd747d057d22295490086c"
+    },
+    {
+      "name": "stats_CEB.sql",
+      "repo_path": "workloads/stats_CEB/stats_CEB.sql",
+      "role": "workload",
+      "expected_bytes": 54158,
+      "expected_sha256": "8c4f9dca3e4aef8f7d86a3662739e3c2bfa3caec01b23f30b143325a306f86a3"
+    }
+  ]
+}

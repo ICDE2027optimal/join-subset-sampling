@@ -1,0 +1,236 @@
+{
+  "schema": "minimal-experiment-source-identities-v1",
+  "sources": [
+    {
+      "artifact_path": "experiments/preparation/controlled_generator.py",
+      "source_path": "research/code/join_formal/prepare_controlled_scaling.py",
+      "source_sha256": "f675e3b3ebb201c0cc0868e9d012d695d00f6ee6b5201873a8df198488fdcbd9",
+      "semantics": "Generator and probability computations retain the source implementation.",
+      "changes": [
+        "Retained functions through build_case, including original case definitions.",
+        "Removed the original command-line entry and output-manifest scaffolding.",
+        "Updated two historical comments to identify the formal driver and C++ reference.",
+        "Updated module description with positive preparation wording."
+      ]
+    },
+    {
+      "artifact_path": "experiments/preparation/prepare_stats.py",
+      "source_path": "research/code/join_formal/prepare_stats.py",
+      "source_sha256": "f49521a1edd53da19b4201b2873db18dff930058e9b9da2b49f93428b395569d",
+      "changes": [
+        "Updated historical wording in comments and docstrings.",
+        "Added optional per-mode targets used by NEWbranch5, matching the original extension adaptation."
+      ],
+      "semantics": "Parsing, filtering, probability generation, TSV serialization and oracle computations retain the source implementation."
+    },
+    {
+      "artifact_path": "experiments/preparation/prepare_job.py",
+      "source_path": "research/code/join_formal/prepare_job.py",
+      "source_sha256": "0483de6b331a4e9784f6df1e023aad849911bc2f2d419c0184c04ec284dbba0a",
+      "changes": [
+        "Updated historical wording in comments and docstrings.",
+        "Updated the row-domain description consistently in the preparer and query configuration."
+      ],
+      "semantics": "Parsing, filtering, probability generation, TSV serialization and oracle computations retain the source implementation."
+    },
+    {
+      "artifact_path": "experiments/preparation/validate_stats_duckdb.py",
+      "source_path": "research/code/join_formal/validate_stats_duckdb.py",
+      "source_sha256": "e3bcdb13911d576fcd7a8fee7c92252bf82aaa04677fae1f4fee77c3ff2c06bd",
+      "changes": [
+        "Updated historical wording in comments and docstrings.",
+        "Loads DuckDB after argument parsing so CLI help works without the optional oracle dependency."
+      ],
+      "semantics": "Parsing, filtering, probability generation, TSV serialization and oracle computations retain the source implementation."
+    },
+    {
+      "artifact_path": "experiments/configs/stats_sources.json",
+      "source_path": "research/code/join_formal/stats_sources.json",
+      "source_sha256": "de7b40c4fdbfa4b079ad4a88cef0714c3913769f74315e19ca468f2a8d411b03",
+      "changes": [
+        "Added accepted source-file SHA256 and byte sizes from the original preparation inventory."
+      ],
+      "semantics": "Retains the original query and probability protocol."
+    },
+    {
+      "artifact_path": "experiments/configs/stats_queries.json",
+      "source_path": "research/code/join_formal/stats_queries.json",
+      "source_sha256": "54b50b3c04e94c92bc48a6f606e7eb0beee6bc1d10401556cb64d2fb63f6c116",
+      "changes": [],
+      "semantics": "Retains the original query and probability protocol."
+    },
+    {
+      "artifact_path": "experiments/configs/stats_sources.json",
+      "source_path": "research/results/stats_source_inventory.json",
+      "source_sha256": "802fc6d34327a76b6febc312782d8a1cd880e3fc162218f41e9fa21e9bf84f05",
+      "changes": [
+        "Retained source-file hashes and byte sizes."
+      ],
+      "semantics": "Pins the originally prepared source bytes."
+    },
+    {
+      "artifact_path": "experiments/configs/job_sources.json",
+      "source_path": "research/code/join_formal/job_sources.json",
+      "source_sha256": "23447d2759ccde8da86523481ee13169d88e138e5bd5d02611300b9dac50e7fc",
+      "changes": [
+        "Added accepted source-file SHA256 and byte sizes from the original preparation inventory."
+      ],
+      "semantics": "Retains the original query and probability protocol."
+    },
+    {
+      "artifact_path": "experiments/configs/job_queries.json",
+      "source_path": "research/code/join_formal/job_queries.json",
+      "source_sha256": "1708645c918c95089eb40254dad5a7f96b97ccc68c91b06f9052857f0ec52382",
+      "changes": [
+        "Updated the row-domain description consistently in the preparer and query configuration."
+      ],
+      "semantics": "Retains the original query and probability protocol."
+    },
+    {
+      "artifact_path": "experiments/configs/job_sources.json",
+      "source_path": "research/results/job_source_inventory.json",
+      "source_sha256": "185cca50b57646abceb60ff4c12a1efad9f70ff94d226c7f0237d6882bbb906b",
+      "changes": [
+        "Retained source-file hashes and byte sizes."
+      ],
+      "semantics": "Pins the originally prepared source bytes."
+    },
+    {
+      "artifact_path": "experiments/runners/run_controlled.py",
+      "source_path": "research/code/join_formal/plan_controlled_scaling.py",
+      "source_sha256": "5759528623c36bd503880bcfab59cc0f568999b4de6133c1d75b57eef8cbc90a",
+      "changes": [
+        "Retained original primary method order, applicability, seed base and formula.",
+        "Selected groups retain original case indices."
+      ],
+      "semantics": "Source scheduling and measurement protocol informs the new runner."
+    },
+    {
+      "artifact_path": "experiments/runners/run_controlled.py",
+      "source_path": "research/code/join_formal/plan_materialized_explicit.py",
+      "source_sha256": "4f2e5e5dd4816b4e9abff205962ce5d67e7203f51590d372d4f0f06ae71f5769",
+      "changes": [
+        "Retained paired Candidate and Materialized schedule, seed base, method indices and supplement case indices."
+      ],
+      "semantics": "Source scheduling and measurement protocol informs the new runner."
+    },
+    {
+      "artifact_path": "experiments/runners/run_controlled.py",
+      "source_path": "research/code/join_formal/run_formal_stats.py",
+      "source_sha256": "fd0350673629d453a018e5a002453222fa33bde8cb8670981071f3e7cbf57889",
+      "changes": [
+        "Retained whole-process Linux resource limits, GNU time measurement and timeout continuation.",
+        "Added a self-contained group runner with portable source and output paths."
+      ],
+      "semantics": "Source scheduling and measurement protocol informs the new runner."
+    },
+    {
+      "artifact_path": "experiments/configs/newbranch5_queries.json",
+      "source_path": "research/code/join_v03_extension/stats/queries.json",
+      "source_sha256": "b90a7e3572078e2c2980299d25d13e9e86cbfd0b1d3f7e195bf48a93f5fb371a",
+      "changes": [
+        "Retained the extension query protocol."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/configs/newbranch5_sources.json",
+      "source_path": "research/code/join_v03_extension/stats/sources.json",
+      "source_sha256": "a162e3d7f113d7f479418354fc6fe5d23abea052e1cb44ef6301a5a9fa98d3db",
+      "changes": [
+        "Retained extension query and source protocol.",
+        "Added accepted source-file hashes to source configuration."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/preparation/oracle_newbranch5.py",
+      "source_path": "research/code/join_v03_extension/stats/oracle.py",
+      "source_sha256": "a8d35e702dcd351ed0cc60008ab4d0191478c67aea6adf40dad7ae977658b55b",
+      "changes": [
+        "Moved oracle diagnostics into the selected output directory.",
+        "Loads DuckDB after argument parsing so CLI help works without the optional oracle dependency."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/configs/job17a_protocol.json",
+      "source_sha256": "b5cfc82bb2aba85c0aa651a232a093ee51e2b5343ac6cbab74894d9adc1478c7",
+      "changes": [
+        "Updated historical wording while preserving all source and probability settings."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations.",
+      "source_description": "Original JOB17a query protocol"
+    },
+    {
+      "artifact_path": "experiments/configs/job17a.sql",
+      "source_path": "research/code/join_v03_extension/job/job17a.sql",
+      "source_sha256": "a52d479958ec18149f197df005f183f8cee35712398524f344b9751c9dce9fe2",
+      "changes": [],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/configs/job17a_sources.json",
+      "source_path": "research/results/join_v03_extension/job/inventory.json",
+      "source_sha256": "7cd8c8c5ef5a0ddd1fc0076317aed886b709b806fb5ddf04758e72e28ea0c4a0",
+      "changes": [
+        "Retained seven original CSV member sizes and hashes with the shared archive identity."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/preparation/prepare_job17a.py",
+      "source_path": "research/code/join_v03_extension/job/prepare.py",
+      "source_sha256": "2e828a5f596fc4406e77f61693a7beb16fd21eba4bb55e03d81f3521cfa8853d",
+      "changes": [
+        "Uses an explicit raw source directory and local prepare_job import.",
+        "Writes into the selected output directory.",
+        "Copies identical weight files when hard links are unavailable."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/preparation/oracle_job17a.py",
+      "source_path": "research/code/join_v03_extension/job/oracle.py",
+      "source_sha256": "011df7f995bec40e7c159391339d2680e17fdd67932e02d95d143449b8e583cb",
+      "changes": [
+        "Uses an explicit raw source directory and selected output directory.",
+        "Escapes source and temporary paths for SQL.",
+        "Loads DuckDB after argument parsing so CLI help works without the optional oracle dependency."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/preparation/verify_job17a_serialized.py",
+      "source_path": "research/code/join_v03_extension/job/verify_serialized.py",
+      "source_sha256": "3257c5a14c0914e4d9e1e9f6c415f2c9e9e15fbe63e19288ae421a41551c6591",
+      "changes": [
+        "Added CLI help and portable output-relative paths.",
+        "Escapes weight-file paths for SQL.",
+        "Loads DuckDB after argument parsing so CLI help works without the optional oracle dependency."
+      ],
+      "semantics": "Retains original local predicates, feature weights, DP, serialization and oracle computations."
+    },
+    {
+      "artifact_path": "experiments/preparation/prepare_stats.py",
+      "source_path": "research/code/join_v03_extension/stats/prepare.py",
+      "source_sha256": "5f74b68be33da299b28e18c9e4f7be5b3546abb4122ac9e80eaaf5e290c88978",
+      "changes": [
+        "Integrated the optional per-mode target schedule into the generic preparer.",
+        "Uses direct configuration lookup in place of runtime source inspection."
+      ],
+      "semantics": "The original NEWbranch5 mode and target order is retained."
+    }
+  ],
+  "verification": {
+    "controlled_generator_retained_functions_and_classes": 27,
+    "controlled_generator_ast_comparison": "All retained functions and classes match the original AST including constants and defaults.",
+    "comparison_scope": "All functions and classes preceding the source CLI parser. Comments and the module description have updated historical wording.",
+    "extension_fixture_checks": {
+      "NEWbranch5": "33 complete witness assignments. Five-root count, mass, second moment, maximum and envelope match direct enumeration.",
+      "JOB17a": "Eight complete witness assignments. Raw grouped SQL and original full SQL counts match compact DP. All-root induced witness checks and serialized-moment DuckDB checks pass.",
+      "fixture_duckdb_version": "1.5.6",
+      "source_data_downloaded": false
+    }
+  }
+}

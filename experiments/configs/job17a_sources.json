@@ -1,0 +1,77 @@
+{
+  "format": "job17a-source-manifest-v1",
+  "snapshot": "IMDb May-2013 JOB snapshot",
+  "archive": {
+    "url": "https://event.cwi.nl/da/job/imdb.tgz",
+    "bytes": 1263193115,
+    "sha256": "25f9d893c54f903366e0c263f88db0d429dbc2b159d4987ebc1e203242a7e988",
+    "last_modified": "Thu, 19 Dec 2024 13:33:06 GMT",
+    "schema_member": "schematext.sql"
+  },
+  "query_source": {
+    "source_commit": "a39603662e023e449cb2121997a5034df9e02ebf",
+    "sql_sha256": "a52d479958ec18149f197df005f183f8cee35712398524f344b9751c9dce9fe2",
+    "url": "https://raw.githubusercontent.com/gregrahn/join-order-benchmark/a39603662e023e449cb2121997a5034df9e02ebf/17a.sql"
+  },
+  "csv": {
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "header": false,
+    "quote": "\"",
+    "escape_within_quoted_field": "\\",
+    "outside_quote_backslash": "literal data",
+    "null": "unquoted empty field",
+    "quoted_empty": "non-NULL empty string"
+  },
+  "tables": [
+    {
+      "name": "name",
+      "member": "name.csv",
+      "bytes": 321191609,
+      "expected_bytes": 321191609,
+      "expected_sha256": "99a69afb079afad800ed3ac4913110ce8f3b95ef9b488bfda641e308cfb836e6"
+    },
+    {
+      "name": "cast_info",
+      "member": "cast_info.csv",
+      "bytes": 1418137141,
+      "expected_bytes": 1418137141,
+      "expected_sha256": "bfd359eeca7dc571272cd52d560d0178beaf722130feec128ad4681ee493a7c7"
+    },
+    {
+      "name": "title",
+      "member": "title.csv",
+      "bytes": 203877939,
+      "expected_bytes": 203877939,
+      "expected_sha256": "663c5bc45f08440cd2e09d97f22768a82ea4f1f7a049e6b9dfc17fb7b34da0f4"
+    },
+    {
+      "name": "movie_companies",
+      "member": "movie_companies.csv",
+      "bytes": 93112104,
+      "expected_bytes": 93112104,
+      "expected_sha256": "38755ab1706a8e384810dd1cce0d1032839386c9c37cc7834f36a45d177cd683"
+    },
+    {
+      "name": "company_name",
+      "member": "company_name.csv",
+      "bytes": 17802021,
+      "expected_bytes": 17802021,
+      "expected_sha256": "1915eae9e39b595f73166a76aa7a0cc158f902931db627182231ca31ad6a6b7c"
+    },
+    {
+      "name": "movie_keyword",
+      "member": "movie_keyword.csv",
+      "bytes": 93799307,
+      "expected_bytes": 93799307,
+      "expected_sha256": "50a698bdfd207489e1cb02e301e3de45ee9171f1ddc9fe9c3f7308cacc2d7240"
+    },
+    {
+      "name": "keyword",
+      "member": "keyword.csv",
+      "bytes": 3791536,
+      "expected_bytes": 3791536,
+      "expected_sha256": "7a1160e983ef8e97216309deac2be33d91519ab4e716edd6131f66372d969108"
+    }
+  ]
+}

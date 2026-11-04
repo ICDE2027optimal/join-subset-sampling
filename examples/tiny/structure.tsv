@@ -1,0 +1,7 @@
+stats-undirected-v1
+query	tiny-shared-records
+m	2
+verification_root	0
+relation	0	r0	R0	3	keys/r0.tsv	unused
+relation	1	r1	R1	3	keys/r1.tsv	unused
+edge	0	0	1	2	key	key

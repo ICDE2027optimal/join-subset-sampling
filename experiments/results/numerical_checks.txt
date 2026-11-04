@@ -1,0 +1,4 @@
+CORE_CORRECTNESS PASS
+original heavy_ok=true zero_mass_ok=true rank_ok=true weighted_ok=true subset_ok=true weighted_trials=300000 weighted_max_z=1.4589225519197482 subset_trials=250000 marginal_max_z=1.3942128119765149 pair_max_z=1.9875000000000216 lag1_max_z=1.1442667831825089 subset_tv=0.0028640000000000089
+boundary structural_cases=14502 single_trials=100000 single_included=50096 full_law_trials=150000 marginal_max_z=2.8711716539880561 pair_max_z=2.6594301812397063 subset_tv=0.024091041666666636
+rejections checks=8 input_validation=1 nonfinite_mass=1 nonfinite_rate=1

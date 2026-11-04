@@ -1,0 +1,184 @@
+{
+  "format": "stats-query-manifest-v1",
+  "prepared_format": "stats-undirected-v1",
+  "query_order": [
+    "NEWbranch5"
+  ],
+  "probability_protocol": {
+    "epsilon": 0.015625,
+    "targets": [
+      1,
+      100,
+      10000
+    ],
+    "modes": [
+      "uniform",
+      "single-anchor",
+      "product-real"
+    ],
+    "shuffle_rng": "python.random.Random",
+    "shuffle_seed_base_hex": "0x09290000",
+    "shuffle_seed_formula": "base + 100*query_index + relation_index",
+    "numeric_transform": "nearest-rank-q99-log1p",
+    "date_transform": "base-table-min-max-timezone-free-seconds",
+    "scale_direction": "anchor-only-downward",
+    "root_near_tie_relative_delta": 1e-12,
+    "targets_by_mode": {
+      "product-real": [
+        1,
+        100,
+        10000
+      ],
+      "uniform": [
+        100
+      ],
+      "single-anchor": [
+        100
+      ]
+    }
+  },
+  "queries": [
+    {
+      "id": "NEWbranch5",
+      "output_label": "stats-new-branch5-ph-v-c-pl-b-v03",
+      "provenance": {
+        "kind": "NEW-pre-registered",
+        "workload_line_1based": null,
+        "cardinality_tag": null
+      },
+      "verification_root": 1,
+      "anchor_relation": 1,
+      "relations": [
+        {
+          "id": 0,
+          "alias": "ph",
+          "table": "postHistory",
+          "retain_columns": [
+            "Id",
+            "PostId",
+            "CreationDate"
+          ],
+          "filters": [],
+          "product_real_feature": {
+            "kind": "date_recency",
+            "column": "CreationDate"
+          }
+        },
+        {
+          "id": 1,
+          "alias": "v",
+          "table": "votes",
+          "retain_columns": [
+            "Id",
+            "PostId",
+            "UserId",
+            "CreationDate"
+          ],
+          "filters": [],
+          "single_anchor_feature": {
+            "kind": "date_recency",
+            "column": "CreationDate"
+          },
+          "product_real_feature": {
+            "kind": "date_recency",
+            "column": "CreationDate"
+          }
+        },
+        {
+          "id": 2,
+          "alias": "c",
+          "table": "comments",
+          "retain_columns": [
+            "Id",
+            "UserId",
+            "PostId",
+            "CreationDate"
+          ],
+          "filters": [],
+          "product_real_feature": {
+            "kind": "date_recency",
+            "column": "CreationDate"
+          }
+        },
+        {
+          "id": 3,
+          "alias": "pl",
+          "table": "postLinks",
+          "retain_columns": [
+            "Id",
+            "PostId",
+            "CreationDate"
+          ],
+          "filters": [],
+          "product_real_feature": {
+            "kind": "date_recency",
+            "column": "CreationDate"
+          }
+        },
+        {
+          "id": 4,
+          "alias": "b",
+          "table": "badges",
+          "retain_columns": [
+            "Id",
+            "UserId",
+            "Date"
+          ],
+          "filters": [],
+          "product_real_feature": {
+            "kind": "date_recency",
+            "column": "Date"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": 0,
+          "left": 0,
+          "right": 1,
+          "left_columns": [
+            "PostId"
+          ],
+          "right_columns": [
+            "PostId"
+          ]
+        },
+        {
+          "id": 1,
+          "left": 1,
+          "right": 2,
+          "left_columns": [
+            "UserId"
+          ],
+          "right_columns": [
+            "UserId"
+          ]
+        },
+        {
+          "id": 2,
+          "left": 2,
+          "right": 3,
+          "left_columns": [
+            "PostId"
+          ],
+          "right_columns": [
+            "PostId"
+          ]
+        },
+        {
+          "id": 3,
+          "left": 1,
+          "right": 4,
+          "left_columns": [
+            "UserId"
+          ],
+          "right_columns": [
+            "UserId"
+          ]
+        }
+      ],
+      "count_sql": "SELECT COUNT(*) FROM postHistory ph JOIN votes v ON ph.PostId=v.PostId JOIN comments c ON v.UserId=c.UserId JOIN postLinks pl ON c.PostId=pl.PostId JOIN badges b ON b.UserId=v.UserId",
+      "full_occurrence_sql": "SELECT ph.Id, v.Id, c.Id, pl.Id, b.Id FROM postHistory ph JOIN votes v ON ph.PostId=v.PostId JOIN comments c ON v.UserId=c.UserId JOIN postLinks pl ON c.PostId=pl.PostId JOIN badges b ON b.UserId=v.UserId"
+    }
+  ]
+}

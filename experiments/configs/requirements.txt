@@ -1,0 +1,4 @@
+# Accepted preparation used Python 3.10.12, NumPy 1.26.1 and DuckDB 1.5.6.
+# Controlled preparation requires NumPy. The real-data SQL oracles require DuckDB.
+numpy==1.26.1
+duckdb==1.5.6

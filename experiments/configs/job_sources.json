@@ -1,0 +1,136 @@
+{
+  "format": "job-source-manifest-v1",
+  "snapshot": "IMDb May-2013 JOB snapshot",
+  "archive": {
+    "url": "https://event.cwi.nl/da/job/imdb.tgz",
+    "bytes": 1263193115,
+    "sha256": "25f9d893c54f903366e0c263f88db0d429dbc2b159d4987ebc1e203242a7e988",
+    "last_modified": "Thu, 19 Dec 2024 13:33:06 GMT",
+    "schema_member": "schematext.sql"
+  },
+  "query_source": {
+    "url": "https://raw.githubusercontent.com/gregrahn/join-order-benchmark/a39603662e023e449cb2121997a5034df9e02ebf/1a.sql",
+    "repository": "gregrahn/join-order-benchmark",
+    "commit": "a39603662e023e449cb2121997a5034df9e02ebf",
+    "status": "pinned review mirror; primary benchmark attribution is Leis et al. PVLDB 2015"
+  },
+  "csv": {
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "header": false,
+    "quote": "\"",
+    "escape_within_quoted_field": "\\",
+    "outside_quote_backslash": "literal data",
+    "null": "unquoted empty field",
+    "quoted_empty": "non-NULL empty string"
+  },
+  "tables": [
+    {
+      "name": "company_type",
+      "member": "company_type.csv",
+      "bytes": 92,
+      "columns": [
+        "id",
+        "kind"
+      ],
+      "types": [
+        "int",
+        "text"
+      ],
+      "expected_sha256": "27f13bddd29d5f8921bbc9710d95c4454cc5e072bc4c1288d8a312a2260e5a26",
+      "expected_bytes": 92
+    },
+    {
+      "name": "info_type",
+      "member": "info_type.csv",
+      "bytes": 1928,
+      "columns": [
+        "id",
+        "info"
+      ],
+      "types": [
+        "int",
+        "text"
+      ],
+      "expected_sha256": "f3179f676bd54ab5b5d99b7204f762afce7e56adee277b9cdb12e6b778f71660",
+      "expected_bytes": 1928
+    },
+    {
+      "name": "movie_companies",
+      "member": "movie_companies.csv",
+      "bytes": 93112104,
+      "columns": [
+        "id",
+        "movie_id",
+        "company_id",
+        "company_type_id",
+        "note"
+      ],
+      "types": [
+        "int",
+        "int",
+        "int",
+        "int",
+        "text"
+      ],
+      "expected_sha256": "38755ab1706a8e384810dd1cce0d1032839386c9c37cc7834f36a45d177cd683",
+      "expected_bytes": 93112104
+    },
+    {
+      "name": "movie_info_idx",
+      "member": "movie_info_idx.csv",
+      "bytes": 35335875,
+      "columns": [
+        "id",
+        "movie_id",
+        "info_type_id",
+        "info",
+        "note"
+      ],
+      "types": [
+        "int",
+        "int",
+        "int",
+        "text",
+        "text"
+      ],
+      "expected_sha256": "194b245145d8035e60df6daad0cd4fabc6f58c9594c8f95cf76748753f6c0a2f",
+      "expected_bytes": 35335875
+    },
+    {
+      "name": "title",
+      "member": "title.csv",
+      "bytes": 203877939,
+      "columns": [
+        "id",
+        "title",
+        "imdb_index",
+        "kind_id",
+        "production_year",
+        "imdb_id",
+        "phonetic_code",
+        "episode_of_id",
+        "season_nr",
+        "episode_nr",
+        "series_years",
+        "md5sum"
+      ],
+      "types": [
+        "int",
+        "text",
+        "text",
+        "int",
+        "int",
+        "int",
+        "text",
+        "int",
+        "int",
+        "int",
+        "text",
+        "text"
+      ],
+      "expected_sha256": "663c5bc45f08440cd2e09d97f22768a82ea4f1f7a049e6b9dfc17fb7b34da0f4",
+      "expected_bytes": 203877939
+    }
+  ]
+}

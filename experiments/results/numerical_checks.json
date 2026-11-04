@@ -1,0 +1,13 @@
+{
+  "description": "Author numerical-suite output with corrected overlapping-pair variance",
+  "file": "numerical_checks.txt",
+  "sha256": "42902b372423fab7a44b1804df5a5169116dc53f3b487e51ba6e73d774ce23b9",
+  "source_summary_sha256": "ff1ac185d87181ac55de73d1b3c574d948ecf23f0c626ca439308da6c3774efb",
+  "source_cpp_sha256": "24f9612df315df8da26b0bc869939f75e44a8e1c198a9031d3babf4771c188d6",
+  "checks": {
+    "exit_code": 0,
+    "non_lag_stdout_exact_match": true,
+    "sampling_and_rng_logic_changed": false,
+    "corrected_lag1_max_z": "1.1442667831825089"
+  }
+}

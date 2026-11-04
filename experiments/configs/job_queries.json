@@ -1,0 +1,181 @@
+{
+  "format": "job-query-manifest-v1",
+  "prepared_format": "stats-undirected-v1",
+  "probability_protocol": {
+    "epsilon": 0.015625,
+    "targets": [
+      1,
+      100,
+      10000
+    ],
+    "modes": [
+      "uniform",
+      "single-anchor",
+      "product-real",
+      "product-shuffled"
+    ],
+    "shuffle_rng": "python.random.Random",
+    "shuffle_seed_base_hex": "0x09290100",
+    "shuffle_seed_formula": "base + relation_id",
+    "scale_direction": "Title-anchor-only-downward",
+    "root_near_tie_relative_delta": 1e-12,
+    "row_domain": "original local filters with all surviving source occurrences retained"
+  },
+  "query_order": [
+    "JOB1a"
+  ],
+  "queries": [
+    {
+      "id": "JOB1a",
+      "output_label": "job-1a-imdb-may2013",
+      "provenance": {
+        "kind": "Join Order Benchmark",
+        "query": "1a.sql",
+        "source_commit": "a39603662e023e449cb2121997a5034df9e02ebf"
+      },
+      "verification_root": 2,
+      "anchor_relation": 2,
+      "relations": [
+        {
+          "id": 0,
+          "alias": "ct",
+          "table": "company_type",
+          "retain_columns": [
+            "id",
+            "kind"
+          ]
+        },
+        {
+          "id": 1,
+          "alias": "mc",
+          "table": "movie_companies",
+          "retain_columns": [
+            "id",
+            "movie_id",
+            "company_type_id",
+            "note"
+          ]
+        },
+        {
+          "id": 2,
+          "alias": "t",
+          "table": "title",
+          "retain_columns": [
+            "id",
+            "production_year"
+          ],
+          "single_anchor_feature": {
+            "kind": "year_recency",
+            "column": "production_year"
+          },
+          "product_real_feature": {
+            "kind": "year_recency",
+            "column": "production_year"
+          }
+        },
+        {
+          "id": 3,
+          "alias": "mi_idx",
+          "table": "movie_info_idx",
+          "retain_columns": [
+            "id",
+            "movie_id",
+            "info_type_id",
+            "info"
+          ],
+          "product_real_feature": {
+            "kind": "positive_integral_inverse_rank",
+            "column": "info"
+          }
+        },
+        {
+          "id": 4,
+          "alias": "it",
+          "table": "info_type",
+          "retain_columns": [
+            "id",
+            "info"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "id": 0,
+          "left": 0,
+          "right": 1,
+          "left_columns": [
+            "id"
+          ],
+          "right_columns": [
+            "company_type_id"
+          ]
+        },
+        {
+          "id": 1,
+          "left": 1,
+          "right": 2,
+          "left_columns": [
+            "movie_id"
+          ],
+          "right_columns": [
+            "id"
+          ]
+        },
+        {
+          "id": 2,
+          "left": 2,
+          "right": 3,
+          "left_columns": [
+            "id"
+          ],
+          "right_columns": [
+            "movie_id"
+          ]
+        },
+        {
+          "id": 3,
+          "left": 3,
+          "right": 4,
+          "left_columns": [
+            "info_type_id"
+          ],
+          "right_columns": [
+            "id"
+          ]
+        }
+      ],
+      "filters": {
+        "ct": [
+          {
+            "column": "kind",
+            "op": "=",
+            "value": "production companies"
+          }
+        ],
+        "it": [
+          {
+            "column": "info",
+            "op": "=",
+            "value": "top 250 rank"
+          }
+        ],
+        "mc": [
+          {
+            "column": "note",
+            "op": "NOT LIKE",
+            "value": "%(as Metro-Goldwyn-Mayer Pictures)%"
+          },
+          {
+            "column": "note",
+            "op": "OR-LIKE",
+            "values": [
+              "%(co-production)%",
+              "%(presents)%"
+            ]
+          }
+        ]
+      },
+      "count_sql": "SELECT COUNT(*) FROM company_type AS ct, info_type AS it, movie_companies AS mc, movie_info_idx AS mi_idx, title AS t WHERE ct.kind = 'production companies' AND it.info = 'top 250 rank' AND mc.note NOT LIKE '%(as Metro-Goldwyn-Mayer Pictures)%' AND (mc.note LIKE '%(co-production)%' OR mc.note LIKE '%(presents)%') AND ct.id = mc.company_type_id AND t.id = mc.movie_id AND t.id = mi_idx.movie_id AND mc.movie_id = mi_idx.movie_id AND it.id = mi_idx.info_type_id"
+    }
+  ]
+}

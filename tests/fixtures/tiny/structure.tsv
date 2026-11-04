@@ -1,0 +1,11 @@
+stats-undirected-v1
+query	fixture-path4
+m	4
+verification_root	1
+relation	0	ph	postHistory	2	keys/r0.tsv	features/r0.tsv
+relation	1	v	votes	3	keys/r1.tsv	features/r1.tsv
+relation	2	c	comments	3	keys/r2.tsv	features/r2.tsv
+relation	3	pl	postLinks	2	keys/r3.tsv	features/r3.tsv
+edge	0	0	1	2	PostId	PostId
+edge	1	1	2	2	UserId	UserId
+edge	2	2	3	2	PostId	PostId

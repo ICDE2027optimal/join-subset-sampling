@@ -1,0 +1,34 @@
+{
+  "query": "JOB17a",
+  "source_snapshot": "IMDb May-2013 JOB snapshot",
+  "archive_url": "https://event.cwi.nl/da/job/imdb.tgz",
+  "archive_sha256": "25f9d893c54f903366e0c263f88db0d429dbc2b159d4987ebc1e203242a7e988",
+  "source_commit": "a39603662e023e449cb2121997a5034df9e02ebf",
+  "source_url": "https://raw.githubusercontent.com/gregrahn/join-order-benchmark/a39603662e023e449cb2121997a5034df9e02ebf/17a.sql",
+  "sql_sha256": "a52d479958ec18149f197df005f183f8cee35712398524f344b9751c9dce9fe2",
+  "selection_basis": "Selected before counting or sampler timing for three fact branches and broader original predicates than JOB6a/JOB8a.",
+  "witness_semantics": "One output for each complete original occurrence-ID assignment. The full occurrence assignment lifts the original MIN projection and applies the original local predicates.",
+  "epsilon": 0.015625,
+  "features": {
+    "t": "eps+(1-eps)*(production_year-1880)/(2019-1880). NULL=>eps, assert all observed values in range",
+    "ci": "eps+(1-eps)/nr_order for positive integers. NULL/nonpositive=>eps",
+    "n,mc,cn,mk,k": "neutral1 (categorical-only relations)"
+  },
+  "settings": {
+    "product-real": [
+      1,
+      100,
+      10000
+    ],
+    "uniform": [
+      100
+    ],
+    "single-anchor": [
+      100
+    ]
+  },
+  "single_anchor_relation": "title",
+  "scale_rule": "Multiply only title weights by min(1,target/base_mu). collapse identical unreachable target scales within mode.",
+  "root_choice": "all-root minimum envelope, relative near-tie delta1e-12, then smallest relation ID",
+  "sampler_timing_at_selection": "none"
+}
